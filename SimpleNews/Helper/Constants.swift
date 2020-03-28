@@ -11,7 +11,7 @@ import Foundation
 
 public class Constants {
     public static let shared = Constants()
-    public let apiKey = "38feb4ccb9e248a38bd8b2cfc0ffd938"
+    public let apiKey = "4975795104444f8499043dc41295f135"
     public let baseURL = "https://newsapi.org/v2/"
 }
 
