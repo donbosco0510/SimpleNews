@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9277427A242F81B4004F4AC7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92774279242F81B3004F4AC7 /* WebKit.framework */; };
 		F36A92FF242F307A004123C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A92FE242F307A004123C1 /* Constants.swift */; };
 		F36A9301242F30A2004123C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A9300242F30A2004123C1 /* Extensions.swift */; };
 		F36A9304242F30E9004123C1 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A9303242F30E9004123C1 /* NewsData.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92774279242F81B3004F4AC7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F36A92FE242F307A004123C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F36A9300242F30A2004123C1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F36A9303242F30E9004123C1 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
@@ -51,12 +53,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9277427A242F81B4004F4AC7 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92774278242F81B3004F4AC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92774279242F81B3004F4AC7 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F36A9302242F30C6004123C1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +83,7 @@
 			children = (
 				F3C05B95242F2AB900F22992 /* SimpleNews */,
 				F3C05B94242F2AB900F22992 /* Products */,
+				92774278242F81B3004F4AC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,9 +115,7 @@
 			children = (
 				F3C05B9A242F2AB900F22992 /* ViewController.swift */,
 				F3E0380C242F35440059C897 /* SourcesViewController.swift */,
-				F3E0380E242F361D0059C897 /* SourcesTableViewCell.swift */,
 				F3E03812242F41640059C897 /* ArticlesViewController.swift */,
-				F3E03814242F42230059C897 /* ArticlesTableViewCell.swift */,
 				F3E03818242F57C00059C897 /* WebViewController.swift */,
 			);
 			path = Controller;
@@ -116,6 +126,8 @@
 			children = (
 				F3C05B9C242F2AB900F22992 /* Main.storyboard */,
 				F3C05BA1242F2ABC00F22992 /* LaunchScreen.storyboard */,
+				F3E03814242F42230059C897 /* ArticlesTableViewCell.swift */,
+				F3E0380E242F361D0059C897 /* SourcesTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
