@@ -1,0 +1,2 @@
+# SimpleNews
+Mandiri Test
