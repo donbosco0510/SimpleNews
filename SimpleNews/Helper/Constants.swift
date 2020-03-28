@@ -7,11 +7,13 @@
 //
 
 
-import Foundation
+import UIKit
 
 public class Constants {
     public static let shared = Constants()
     public let apiKey = "4975795104444f8499043dc41295f135"
     public let baseURL = "https://newsapi.org/v2/"
+    let alternateHighlightAlpha: CGFloat = 0.03
+    
 }
 

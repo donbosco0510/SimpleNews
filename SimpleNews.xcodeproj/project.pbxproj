@@ -19,6 +19,10 @@
 		F3E0380D242F35440059C897 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0380C242F35440059C897 /* SourcesViewController.swift */; };
 		F3E0380F242F361D0059C897 /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E0380E242F361D0059C897 /* SourcesTableViewCell.swift */; };
 		F3E03811242F36E60059C897 /* NewsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E03810242F36E60059C897 /* NewsDataManager.swift */; };
+		F3E03813242F41640059C897 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E03812242F41640059C897 /* ArticlesViewController.swift */; };
+		F3E03815242F42230059C897 /* ArticlesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E03814242F42230059C897 /* ArticlesTableViewCell.swift */; };
+		F3E03817242F4F610059C897 /* LocadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E03816242F4F610059C897 /* LocadingIndicator.swift */; };
+		F3E03819242F57C00059C897 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E03818242F57C00059C897 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		F3E0380C242F35440059C897 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		F3E0380E242F361D0059C897 /* SourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewCell.swift; sourceTree = "<group>"; };
 		F3E03810242F36E60059C897 /* NewsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataManager.swift; sourceTree = "<group>"; };
+		F3E03812242F41640059C897 /* ArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
+		F3E03814242F42230059C897 /* ArticlesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesTableViewCell.swift; sourceTree = "<group>"; };
+		F3E03816242F4F610059C897 /* LocadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocadingIndicator.swift; sourceTree = "<group>"; };
+		F3E03818242F57C00059C897 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			children = (
 				F36A92FE242F307A004123C1 /* Constants.swift */,
 				F36A9300242F30A2004123C1 /* Extensions.swift */,
+				F3E03816242F4F610059C897 /* LocadingIndicator.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -95,6 +104,9 @@
 				F3C05B9A242F2AB900F22992 /* ViewController.swift */,
 				F3E0380C242F35440059C897 /* SourcesViewController.swift */,
 				F3E0380E242F361D0059C897 /* SourcesTableViewCell.swift */,
+				F3E03812242F41640059C897 /* ArticlesViewController.swift */,
+				F3E03814242F42230059C897 /* ArticlesTableViewCell.swift */,
+				F3E03818242F57C00059C897 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3E03817242F4F610059C897 /* LocadingIndicator.swift in Sources */,
 				F36A9301242F30A2004123C1 /* Extensions.swift in Sources */,
 				F3E03811242F36E60059C897 /* NewsDataManager.swift in Sources */,
 				F3C05B9B242F2AB900F22992 /* ViewController.swift in Sources */,
@@ -197,6 +210,9 @@
 				F3C05B99242F2AB900F22992 /* SceneDelegate.swift in Sources */,
 				F36A92FF242F307A004123C1 /* Constants.swift in Sources */,
 				F3E0380D242F35440059C897 /* SourcesViewController.swift in Sources */,
+				F3E03813242F41640059C897 /* ArticlesViewController.swift in Sources */,
+				F3E03819242F57C00059C897 /* WebViewController.swift in Sources */,
+				F3E03815242F42230059C897 /* ArticlesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

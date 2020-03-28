@@ -10,12 +10,13 @@
 import UIKit
 
 protocol ArticleDataDelegate {
-    func didGetArticleData(articleData: [Article])
+    func didGetArticleData(fetchedArticleData: [Article])
     func didFailWithError(error: Error)
+    func setTotalResults(_ total: Int)
 }
 
 protocol SourceDataDelegate {
-    func didGetSourceData(sourceData: [Source])
+    func didGetSourceData(fetchedSourceData: [Source])
     func didFailWithError(error: Error)
 }
 
@@ -23,25 +24,32 @@ class NewsDataManager {
     
     var articleDelegate: ArticleDataDelegate?
     var sourceDelegate: SourceDataDelegate?
+    var isFetchInProgress: Bool = false
+    static var currentArticlePage = 0
     
     func fetchSourceList(category: Category, sender: Any) {
-        let urlString = "\(Constants.shared.baseURL)sources?apiKey=\(Constants.shared.apiKey)&category=\(category.rawValue)"
-        performRequest(with: urlString, delegate: sender)
+        let urlString = "\(Constants.shared.baseURL)sources?&apiKey=\(Constants.shared.apiKey)&category=\(category.rawValue)"
+        print("fetchSourceList: \(urlString)")
+        if !isFetchInProgress {
+            isFetchInProgress = true
+            performRequest(with: urlString, delegate: sender)
+        }
     }
     
     func fetchArticles(sourceId: String, sender: Any) {
-        print("Fetch articles")
-        let urlString = "\(Constants.shared.baseURL)everything?sources=\(sourceId)&apiKey=\(Constants.shared.apiKey)"
-        performRequest(with: urlString, delegate: self)
+        let urlString = "\(Constants.shared.baseURL)everything?sources=\(sourceId)&page=\(NewsDataManager.currentArticlePage+1)&apiKey=\(Constants.shared.apiKey)"
+        print("fetchArticles: \(urlString)")
+        if !isFetchInProgress {
+            isFetchInProgress = true
+            performRequest(with: urlString, delegate: self)
+        }
     }
     
     func performRequest(with urlString: String, delegate: Any) {
-        print("Perform Request")
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print("Data Task Error")
                     if let delegate = self.sourceDelegate {
                         delegate.didFailWithError(error: error!)
                     } else if let delegate = self.articleDelegate {
@@ -50,21 +58,19 @@ class NewsDataManager {
                     return
                 }
                 if let safeData = data {
-                    print("Perform request - safeData")
                     if let delegate = self.sourceDelegate {
-                        print("delegateSourceData")
                         if let sourcesData = self.parseJSONSourcesData(safeData, delegate: delegate) {
-                            delegate.didGetSourceData(sourceData: sourcesData)
+                            delegate.didGetSourceData(fetchedSourceData: sourcesData)
                         }
                     }
-                    print ("Perform request - before articleDataDelegate")
                     if let delegate = self.articleDelegate {
-                        print("delegate ArticleData")
                         if let articleData = self.parseJSONArticleData(safeData, delegate: delegate) {
-                            delegate.didGetArticleData(articleData: articleData)
+                            NewsDataManager.currentArticlePage += 1
+                            delegate.didGetArticleData(fetchedArticleData: articleData)
                         }
                     }
                 }
+                self.isFetchInProgress = false
             }
             task.resume()
         }
@@ -83,25 +89,24 @@ class NewsDataManager {
     }
     
     func parseJSONArticleData(_ articleData: Data, delegate: ArticleDataDelegate) -> [Article]? {
-        print("ParseJSONArticleData")
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(RawArticlesData.self, from: articleData)
+            delegate.setTotalResults(decodedData.totalResults)
             return decodedData.articles
         } catch {
-            print("Parsing Error")
             delegate.didFailWithError(error: error)
             return nil
         }
     }
     
-    func downloadImage(from url: URL, imageView: UIImageView) {
+    func downloadImage(from url: URL, cell: ArticlesTableViewCell) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async() {
-                imageView.image = UIImage(data: data)
+                cell.articleImage.image = UIImage(data: data)
+                cell.indicatorView.stopAnimating()
             }
         }.resume()
     }
 }
-
